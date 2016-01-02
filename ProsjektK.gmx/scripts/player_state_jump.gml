@@ -8,11 +8,17 @@ if (dirX == 0) {
 }
 
 if (charging) {
-    //Charge jump
-    velX = dirX * -(velY / 3);
-    velY -= JUMP_FORCE;
-    if (velY < -MAX_JUMP) { velY = -MAX_JUMP; }
-    image_index = 1;
+    if (velY == 0) {
+        //Start jumping
+        velY = -jumpMin;
+        image_index = 1;
+    }
+    else {
+        //Charge jump
+        velX = dirX * -(velY / 3);
+        velY -= jumpCharge;
+        if (velY < -jumpMax) { velY = -jumpMax; }
+    }
 }
 else {
     //Take off

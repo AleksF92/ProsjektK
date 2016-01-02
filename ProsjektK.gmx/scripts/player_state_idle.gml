@@ -13,7 +13,6 @@ if (charge) {
     sprite_index = spr_Player_Jumping;
     image_index = 0;
     image_speed = 0;
-    velY = -MIN_JUMP;
     state = player_state_jump;
 }
 else if (dirX != 0 && !wall) {

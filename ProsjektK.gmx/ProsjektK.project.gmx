@@ -22,6 +22,7 @@
       <sprite>sprites\spr_Player_Jumping</sprite>
       <sprite>sprites\spr_Player_Idle2</sprite>
       <sprite>sprites\spr_Player_Idle</sprite>
+      <sprite>sprites\spr_Player_Dummy</sprite>
     </sprites>
     <sprites name="World Sprites">
       <sprite>sprites\spr_Grass</sprite>
@@ -81,6 +82,14 @@
       <script>scripts\player_state_fall.gml</script>
       <script>scripts\player_platform.gml</script>
       <script>scripts\player_wall.gml</script>
+      <script>scripts\player_resize.gml</script>
+      <script>scripts\player_swap.gml</script>
+      <script>scripts\player_split.gml</script>
+      <script>scripts\dummy_resize.gml</script>
+      <script>scripts\dummy_platform.gml</script>
+      <script>scripts\dummy_wall.gml</script>
+      <script>scripts\dummy_state_fall.gml</script>
+      <script>scripts\dummy_state_idle.gml</script>
     </scripts>
     <scripts name="TextDisplay">
       <script>scripts\textdisplay_show.gml</script>
@@ -109,6 +118,7 @@
     <object>objects\Notification</object>
     <objects name="Player">
       <object>objects\Player</object>
+      <object>objects\PlayerDummy</object>
       <object>objects\PlayerCam</object>
       <object>objects\PlayerSpawn</object>
     </objects>

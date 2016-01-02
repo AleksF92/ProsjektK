@@ -82,12 +82,29 @@ if (room != rom_Main) {
         room_goto(rom_Main);
     }
     
+    /*
     if (keyboard_check_pressed(ord("I"))) {
         Inventory.visible = !Inventory.visible;
     }
     
     if (keyboard_check_pressed(ord("C"))) {
         Crafting.visible = !Crafting.visible;
+    }
+    */
+    
+    var dirY = keyboard_check_pressed(ord("S")) - keyboard_check_pressed(ord("W"));
+    if (dirY != 0) {
+        with (Player) {
+            player_resize(size + dirY);
+        }
+    }
+    
+    if (keyboard_check_pressed(ord("R"))) {
+        player_swap();
+    }
+    
+    if (keyboard_check_pressed(ord("T"))) {
+        player_split();
     }
 }
 </string>

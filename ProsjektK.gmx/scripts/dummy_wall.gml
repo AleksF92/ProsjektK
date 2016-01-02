@@ -1,10 +1,10 @@
-///player_wall(dir)
+///dummy_wall(dir)
 var dir = sign(argument[0]);
 show_debug_message("Dir: " + string(dir));
 
 var SW = sprite_width * phySize;
 var SH = sprite_height * phySize;
-var ground = player_platform();
+var ground = dummy_platform();
 
 var hw = SW / 2;
 var x1 = x + (hw * dir) + (dir * 1);
