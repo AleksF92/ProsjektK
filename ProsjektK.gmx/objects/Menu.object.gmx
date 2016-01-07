@@ -97,7 +97,7 @@ for (var i = 0; i &lt;= room_last; i++) {
             content = ds_list_create();
             ds_list_add(menu, content);
             ds_list_add(content, "TEXT"); //Type
-            ds_list_add(content, "Alpha v0.1"); //Text
+            ds_list_add(content, "The Blob - Alpha v0.3"); //Text
             ds_list_add(content, 10); //X
             ds_list_add(content, 5); //Y
             

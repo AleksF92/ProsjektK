@@ -51,9 +51,12 @@ Inventory.y = cy - (Inventory.TOTAL_H / 2);
 instance_create(0, 0, Crafting);
 
 //Create notification
-NOTIFY_TIME = 10;
+NOTIFY_TIME = 5;
 tags = ds_map_create();
 instance_create(0, 0, Notification);
+
+//Create trigger vars
+triggers = ds_map_create();
 </string>
           </argument>
         </arguments>
@@ -80,31 +83,6 @@ instance_create(0, 0, Notification);
 if (room != rom_Main) {
     if (keyboard_check_pressed(vk_escape)) {
         room_goto(rom_Main);
-    }
-    
-    /*
-    if (keyboard_check_pressed(ord("I"))) {
-        Inventory.visible = !Inventory.visible;
-    }
-    
-    if (keyboard_check_pressed(ord("C"))) {
-        Crafting.visible = !Crafting.visible;
-    }
-    */
-    
-    var dirY = keyboard_check_pressed(ord("S")) - keyboard_check_pressed(ord("W"));
-    if (dirY != 0) {
-        with (Player) {
-            player_resize(size + dirY);
-        }
-    }
-    
-    if (keyboard_check_pressed(ord("R"))) {
-        player_swap();
-    }
-    
-    if (keyboard_check_pressed(ord("T"))) {
-        player_split();
     }
 }
 </string>
@@ -137,13 +115,23 @@ switch (room) {
         Notification.visible = false;
         Menu.visible = true;
         
-        ds_map_clear(tags);
         ds_grid_clear(Inventory.iId, -1);
         ds_grid_clear(Inventory.iCount, 0);
         break;
     }
     case rom_Level1: {
         Menu.visible = false;
+        
+        ds_map_clear(tags);
+        ds_map_clear(triggers);
+        
+        notify_show(
+            "Press [A] and [D] to move.",
+        NOTIFY_TIME, "WELCOME", false, true);
+        break;
+    }
+    case rom_Level2: {
+        triggers[? "P2_DOOR"] = false;
         break;
     }
 }
@@ -174,6 +162,7 @@ if (room != rom_Main) {
     var bg = -1;
     switch(room) {
         case rom_Level1: { bg = bg_Cave; break; }
+        case rom_Level2: { bg = bg_Cave; break; }
     }
     
     //Draw background

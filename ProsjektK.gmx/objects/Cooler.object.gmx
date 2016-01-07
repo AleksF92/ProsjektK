@@ -54,9 +54,9 @@ RANGE = 32;
           <argument>
             <kind>1</kind>
             <string>///Explosion timeout
-var distX = (heater.phy_position_x - phy_position_x) / 2;
-var distY = (heater.phy_position_y - phy_position_y) / 2;
-var boom = instance_create(phy_position_x + distX, phy_position_y + distY - 32, Effect);
+var distX = (heater.x - x) / 2;
+var distY = (heater.y - y) / 2;
+var boom = instance_create(x + distX, y + distY - 32, Effect);
 boom.type = "Explosion";
 </string>
           </argument>
@@ -83,17 +83,10 @@ boom.type = "Explosion";
             <string>///Event handling
 event_inherited();
 
-if (held) {
-    notify_show("You are now carrying a COOLER."
-        + "#This item emitts a very cold aura."
-        + "##Place it next to other objects to see if it interacts with them!"
-    , Main.NOTIFY_TIME, "NOTIFY_COOLER", false, true);
-}
-
 //Check for heaters
-if (mouse_check_button_released(mb_left)) {
+//if (mouse_check_button_released(mb_left)) {
     if (!held &amp;&amp; heater == noone) {
-        heater = instance_nearest(phy_position_x, phy_position_y, Heater);
+        heater = instance_nearest(x, y, Heater);
         if (distance_to_object(heater) &lt;= RANGE) {
             //In range for explosion
             if (!alarm[0]) {
@@ -116,30 +109,7 @@ if (mouse_check_button_released(mb_left)) {
             alarm[0] = 0;
         }
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="Player">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Trigger
+//}
 </string>
           </argument>
         </arguments>
@@ -175,8 +145,8 @@ if (alarm[0]) {
     var time = string(ceil(alarm[0] / room_speed));
     var w = string_width(time);
     var h = string_height(time);
-    var distX = (heater.phy_position_x - phy_position_x) / 2;
-    var distY = (heater.phy_position_y - phy_position_y) / 2;
+    var distX = (heater.x - x) / 2;
+    var distY = (heater.y - y) / 2;
     var x1 = x + distX;
     var y1 = y + distY - 32;
     var col1 = c_black;

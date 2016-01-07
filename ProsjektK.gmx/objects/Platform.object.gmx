@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,6 +28,7 @@
             <string>///Initialize platform
 image_speed = 0;
 enum PSIDE { CENTER, SINGLE, LEFT, RIGHT };
+image_index = PSIDE.CENTER;
 </string>
           </argument>
         </arguments>

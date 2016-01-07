@@ -6,9 +6,9 @@ switch (textId) {
     case "Objective": {
         TextDisplay.fullText =
         "Objective"
-        + "##You are an experiment gone bad!"
+        + "##You are controlling a slime. An experiment gone bad!"
         + "#You broke loose and are seeking to escape the underground labs."
-        + "#You have the ability to split clone yourself to solve puzzles.";
+        + "#You have the ability to split/clone yourself to solve puzzles.";
         break;
     }
     case "Controls": {
@@ -17,13 +17,29 @@ switch (textId) {
         + "##[A or LEFT] :: Move left"
         + "#[D or RIGHT] :: Move right"
         + "#[SPACE] :: Hold to charge jump"
-        + "#[Left Mouse] :: Interact with objects"
+        + "#[W] :: Split into more slimes."
+        + "#[S] :: Merge with slime(s)."
+        + "#[TAB] :: Swap controlled slime."
+        + "#[LEFT MOUSE] :: Interact with objects."
         + "##[Escape] :: Return to main menu";
         break;
     }
     case "Change Log": {
         TextDisplay.fullText =
-        "Change Log (Alpha v0.1)"
+        "Change Log (Alpha v0.3)"
+        + "##Added new obstacles."
+        + "#Added new level."
+        
+        + "<PAGE>"
+        + "Change Log (Alpha v0.2)"
+        + "##Added game title."
+        + "#Added bridge ability for big slime."
+        + "#Added new textures."
+        + "#Added triggers and doors."
+        + "#Built start of showcase level."
+        
+        + "<PAGE>"
+        + "Change Log (Alpha v0.1)"
         + "##No changes yet...";
         break;
     }

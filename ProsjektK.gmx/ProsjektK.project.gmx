@@ -20,9 +20,12 @@
     <sprites name="Player">
       <sprite>sprites\spr_Player_Eat</sprite>
       <sprite>sprites\spr_Player_Jumping</sprite>
+      <sprite>sprites\spr_Player_Bridge2</sprite>
+      <sprite>sprites\spr_Player_Bridge</sprite>
       <sprite>sprites\spr_Player_Idle2</sprite>
       <sprite>sprites\spr_Player_Idle</sprite>
-      <sprite>sprites\spr_Player_Dummy</sprite>
+      <sprite>sprites\spr_Dummy_Bridge</sprite>
+      <sprite>sprites\spr_Dummy_Idle</sprite>
     </sprites>
     <sprites name="World Sprites">
       <sprite>sprites\spr_Grass</sprite>
@@ -33,15 +36,28 @@
       <sprite>sprites\spr_Rock_Small</sprite>
       <sprite>sprites\spr_Heater</sprite>
       <sprite>sprites\spr_Cooler</sprite>
+      <sprite>sprites\spr_Hover_Rock</sprite>
       <sprite>sprites\spr_Invisible_Wall</sprite>
       <sprite>sprites\spr_Tree_Pine</sprite>
       <sprites name="Platform">
         <sprite>sprites\spr_Platform_Cave</sprite>
         <sprite>sprites\spr_Platform_Lab</sprite>
+        <sprite>sprites\spr_Platform_Dummy</sprite>
       </sprites>
       <sprites name="Walls">
         <sprite>sprites\spr_Wall_Lab</sprite>
+        <sprite>sprites\spr_Door_Lab</sprite>
+        <sprite>sprites\spr_Wall_Cave</sprite>
       </sprites>
+      <sprites name="Puzzle">
+        <sprite>sprites\spr_Trigger_Button</sprite>
+        <sprite>sprites\spr_Trigger_Switch</sprite>
+      </sprites>
+      <sprite>sprites\spr_Slime_Container</sprite>
+      <sprites name="Roof">
+        <sprite>sprites\spr_Roof_Lab</sprite>
+      </sprites>
+      <sprite>sprites\spr_Lava</sprite>
     </sprites>
     <sprites name="TextDisplay">
       <sprite>sprites\spr_Page_Back</sprite>
@@ -80,14 +96,16 @@
       <script>scripts\player_state_jump.gml</script>
       <script>scripts\player_state_idle.gml</script>
       <script>scripts\player_state_fall.gml</script>
+      <script>scripts\player_state_levitate.gml</script>
+      <script>scripts\player_state_bridge.gml</script>
       <script>scripts\player_platform.gml</script>
+      <script>scripts\player_roof.gml</script>
       <script>scripts\player_wall.gml</script>
       <script>scripts\player_resize.gml</script>
       <script>scripts\player_swap.gml</script>
       <script>scripts\player_split.gml</script>
+      <script>scripts\player_absorb.gml</script>
       <script>scripts\dummy_resize.gml</script>
-      <script>scripts\dummy_platform.gml</script>
-      <script>scripts\dummy_wall.gml</script>
       <script>scripts\dummy_state_fall.gml</script>
       <script>scripts\dummy_state_idle.gml</script>
     </scripts>
@@ -103,8 +121,12 @@
     </scripts>
     <scripts name="Notification">
       <script>scripts\notify_show.gml</script>
+      <script>scripts\tag_completed.gml</script>
     </scripts>
-    <script>scripts\tag_completed.gml</script>
+    <scripts name="Objects">
+      <script>scripts\object_state_fall.gml</script>
+      <script>scripts\object_state_idle.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_Main</font>
@@ -128,6 +150,7 @@
       <objects name="Heavy Items">
         <object>objects\HeavyItem</object>
         <object>objects\HeavyRock</object>
+        <object>objects\obj_Hover_Rock</object>
         <object>objects\Heater</object>
         <object>objects\Cooler</object>
       </objects>
@@ -135,10 +158,28 @@
         <object>objects\Platform</object>
         <object>objects\obj_Platform_Cave</object>
         <object>objects\obj_Platform_Lab</object>
+        <object>objects\obj_Platform_Dummy</object>
       </objects>
       <objects name="Walls">
         <object>objects\Wall</object>
         <object>objects\obj_Wall_Lab</object>
+        <object>objects\obj_Door_Lab</object>
+        <object>objects\obj_Wall_Cave</object>
+      </objects>
+      <objects name="Puzzle">
+        <object>objects\Trigger</object>
+        <object>objects\Door</object>
+        <object>objects\obj_Button</object>
+        <object>objects\obj_Switch</object>
+        <object>objects\Grab_Item</object>
+        <object>objects\obj_Slime_Orb</object>
+        <object>objects\Hint</object>
+        <object>objects\obj_Lava</object>
+      </objects>
+      <objects name="Roof">
+        <object>objects\Roof</object>
+        <object>objects\obj_Roof_Lab</object>
+        <object>objects\obj_Roof_Invisible</object>
       </objects>
     </objects>
     <object>objects\Effect</object>
@@ -146,6 +187,7 @@
   <rooms name="rooms">
     <room>rooms\rom_Main</room>
     <room>rooms\rom_Level1</room>
+    <room>rooms\rom_Level2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

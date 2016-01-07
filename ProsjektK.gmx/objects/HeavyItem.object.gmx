@@ -30,6 +30,12 @@ event_inherited();
 
 //Carried?
 held = false;
+
+phySize = 1;
+velX = 0;
+velY = 0;
+state = object_state_fall;
+target = noone;
 </string>
           </argument>
         </arguments>
@@ -56,32 +62,69 @@ held = false;
 event_inherited();
 
 if (held) {
-    notify_show("You are now carrying an large item."
-        + "#Press [LEFT MOUSE] to drop it."
-    , Main.NOTIFY_TIME, "NOTIFY_HEAVY_ITEM", false, true);
-
     //Events while held
     selected = false;
     
     //Follow player
-    var DELAY = 4;
-    var distX = Player.phy_position_x - phy_position_x;
-    var distY = (Player.phy_position_y - 8) - phy_position_y;
-    phy_position_x += distX / DELAY;
-    phy_position_y += distY / DELAY;
-    depth = -phy_position_y;
-    
-    if (mouse_check_button_released(mb_left)) {
-        held = false;
-        phy_active = true;
+    var offY = 8;
+    if (target.sprite_index == spr_Player_Jumping) {
+        switch (floor(target.image_index)) {
+            case 1: { offY = 0; break; }
+            case 2: { offY = 32; break; }
+            case 3: { offY = 16; break; }
+        }
+    }
+    offY *= target.phySize;
+    var DELAY = 1;
+    var distX = target.x - x;
+    var distY = (target.y - offY) - y;
+    x += distX / DELAY;
+    y += distY / DELAY;
+
+    if (mouse_check_button_released(mb_left) || target.size &lt; 2) {
+        if (target == Player) {
+            //Drop item
+            held = false;
+            target = noone;
+            state = object_state_fall;
+        }
     }
 }
 else {
+    //Gravity
+    script_execute(state);
+    
     if (selected &amp;&amp; inReach) {
-        //Events while on ground
-        if (mouse_check_button_released(mb_left)) {
-            held = true;
-            phy_active = false;
+        //Mouseover and in range
+        if (Player.size &gt;= 2) {
+            //Events while on ground
+            if (mouse_check_button_released(mb_left)) {
+                //Drop other held items
+                with (HeavyItem) {
+                    if (held &amp;&amp; target == Player) {
+                        //Drop item
+                        held = false;
+                        target = noone;
+                        state = object_state_fall;
+                    }
+                }
+            
+                held = true;
+                target = Player;
+                state = object_state_idle;
+            }
+            
+            notify_show(
+                "This magical substance will make you levitate!#"
+                + "Press [LEFT MOUSE] to pick it up.",
+            Main.NOTIFY_TIME, "TOO_SMALL", true, false);
+        }
+        else {
+            //Too small to hold
+            inReach = false;
+            notify_show(
+                "You are too small to hold this object!",
+            Main.NOTIFY_TIME, "TOO_SMALL", true, false);
         }
     }
 }

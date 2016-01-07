@@ -3,7 +3,7 @@
   <spriteName>spr_Player_Idle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,11 +27,11 @@
             <kind>1</kind>
             <string>///Initialize player
 WEIGHT = 0.01;
-MAX_SIZE = 5;
+MAX_SIZE = 4;
 ANIMATION_SPEED = 1 / 8;
-BASE_MAX_JUMP = 13.334;
-BASE_MIN_JUMP = 3.334;
-BASE_JUMP_CHARGE = 0.134;
+BASE_MAX_JUMP = 20;
+BASE_MIN_JUMP = 5;
+BASE_JUMP_CHARGE = 0.2;
 BASE_SPEED = 2;
 image_speed = 0;
 alarm[0] = room_speed * 3;
@@ -48,6 +48,9 @@ jumpMax = 0;
 mSpeed = 0;
 phySize = 0;
 player_resize(2);
+
+//Bridge platforms
+bridge = -1;
 
 instance_create(x, y, PlayerCam);
 </string>
@@ -109,8 +112,79 @@ if (state == player_state_idle) {
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Handle global player events
+if (keyboard_check_pressed(vk_tab)) {
+    player_swap();
+}
+
+if (keyboard_check_pressed(ord("W"))) {
+    player_split();
+}
+
+if (keyboard_check_pressed(ord("S"))) {
+    player_absorb();
+}
+
+if (size == 4) {
+    notify_show(
+        "You reached the maximal size!#"
+        + "You move much slower, but you can make platforms!#"
+        + "Walk off an edge to stretch out.",
+    10, "FIRST_GROW", false, true);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Execute state
 script_execute(state);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Platform_Dummy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Enter bridge fix
+if (bridge == -1) {
+    //show_debug_message(string(y) + " / " + string(other.y));
+    var toMe = sign(other.x - x);
+    if (y &gt; other.y + 32 &amp;&amp; velY == 0 &amp;&amp; sign(velX) == toMe) {
+        velY -= jumpMin;
+        state = player_state_fall;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -158,13 +232,28 @@ room_restart();
           <argument>
             <kind>1</kind>
             <string>///Draw self
-draw_sprite_ext(sprite_index, image_index, x, y, phySize, phySize, 0, c_white, 0.75);
+
+//Moving
+var dir = sign(velX);
+if (dir == 0) { dir = 1; }
+
+if (sprite_index == spr_Player_Bridge) {
+    if (image_speed &lt; 0) {
+        //Removing the bridge
+        dir *= -1;
+    }
+}
+
+//Draw sprite in dir
+draw_sprite_ext(sprite_index, image_index, x, y, phySize * dir, phySize, 0, c_white, 0.75);
 
 //Draw jump prediction
 if (state == player_state_jump) {
-    var px = (x - (-velX * max(velY, -velY)) * 2);
+    var px = x - (-velX * max(velY, -velY) * 2);
     var py = y;
-    //var py = (y - (max(velY, -velY) * max(velX, -velX)) * 2);
+    if (velX == 0) {
+        var py = y - (max(velY, -velY) * 12);
+    }
     draw_circle_colour(px, py, 5, c_lime, c_lime, false);
     
     //Calc path
@@ -189,7 +278,6 @@ draw_text(x, y - 40,
 
 
 //Draw platform
-/*
 var SW = sprite_width * phySize;
 var SXO = sprite_get_xoffset(sprite_index) * phySize;
 var PW = (sprite_get_width(spr_Platform_Cave) / 3) * (2 - phySize);
@@ -200,7 +288,6 @@ var yOff = y + 1;
 draw_point_colour(leftX, yOff, c_red);
 draw_point_colour(x, yOff, c_red);
 draw_point_colour(rightX, yOff, c_red);
-*/
 </string>
           </argument>
         </arguments>

@@ -31,7 +31,6 @@ MAX_DIST = 32;
 selected = false;
 inReach = false;
 image_speed = 0;
-depth = -y;
 </string>
           </argument>
         </arguments>
@@ -66,16 +65,12 @@ if (mouse_x &gt;= x1 &amp;&amp; mouse_x &lt;= x1 + sprite_width) {
             //Mouse inside
             //Check if I'm closest to the player
             var nearest = true;
-            var dist = distance_to_point(Player.phy_position_x, Player.phy_position_y);
-            
-            notify_show("Highlights will turn GREEN when you"
-                + "#is close enough to interact with the object!"
-            , Main.NOTIFY_TIME, "NOTIFY_ACTION_OBJECT_HOVER", false, true);
+            var dist = distance_to_point(Player.x, Player.y);
             
             with (ActionObject) {
                 if (id != other.id &amp;&amp; instance_id == other.instance_id) {
                     if (selected) {
-                        var tmpDist = distance_to_point(Player.phy_position_x, Player.phy_position_y);
+                        var tmpDist = distance_to_point(Player.x, Player.y);
                         if (tmpDist &lt; dist) {
                             //Other is further away
                             nearest = false;
@@ -94,8 +89,8 @@ if (mouse_x &gt;= x1 &amp;&amp; mouse_x &lt;= x1 + sprite_width) {
             
             if (selected) {
                 //Calculate real distance
-                var distX = phy_position_x - Player.phy_position_x;
-                var distY = phy_position_y - Player.phy_position_y;
+                var distX = x - Player.x;
+                var distY = y - Player.y;
                 distX = max(distX, -distX);
                 distY = max(distY, -distY);
                 distX -= MAX_DIST / 2;

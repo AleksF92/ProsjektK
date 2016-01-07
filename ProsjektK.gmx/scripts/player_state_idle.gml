@@ -29,6 +29,9 @@ else {
         if (image_index == 0) {
             //Looking loop done
             image_speed = 0;
+            
+            //Cancel immidiate idle play
+            alarm[0] = 0;
         }
         
         //Play sound

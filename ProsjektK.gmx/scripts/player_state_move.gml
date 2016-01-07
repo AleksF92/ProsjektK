@@ -10,10 +10,16 @@ var ground = player_platform();
 var wall = player_wall(dirX);
 
 if (!ground) {
-    //Fall
-    state = player_state_fall;
+    if (size == MAX_SIZE) {
+        //Bridge
+        state = player_state_bridge;
+    }
+    else {
+        //Fall
+        state = player_state_fall;
+    }
 }
-if (charge) {
+else if (charge) {
     //Start jumping
     sprite_index = spr_Player_Jumping;
     image_index = 0;

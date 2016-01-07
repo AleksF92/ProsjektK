@@ -23,8 +23,12 @@ if (charging) {
 else {
     //Take off
     velX = dirX * -(velY / 3);
-    x += velX;
-    y += velY;
+    
+    var roof = player_roof();
+    if (!roof) {
+        x += velX;
+        y += velY;
+    }
     image_index = 2;
     state = player_state_fall;
     

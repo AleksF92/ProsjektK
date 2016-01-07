@@ -1,10 +1,9 @@
 ///dummy_state_fall()
 
-//Check for input
 var hw = sprite_width / 4;
 var OFF = 20;
-var ground = dummy_platform();
-var wall = dummy_wall(velX);
+var ground = player_platform();
+var wall = player_wall(velX);
 
 if (wall) {
     velX = 0;

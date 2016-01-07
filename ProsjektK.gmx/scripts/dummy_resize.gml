@@ -9,19 +9,15 @@ if (newSize > 0 && newSize <= MAX_SIZE) {
             break;
         }
         case 2: {
-            phySize = 0.75;
+            phySize = 0.875;
             break;
         }
         case 3: {
-            phySize = 1;
-            break;
-        }
-        case 4: {
             phySize = 1.25;
             break;
         }
-        case 5: {
-            phySize = 1.5;
+        case 4: {
+            phySize = 1.625;
             break;
         }
     }
