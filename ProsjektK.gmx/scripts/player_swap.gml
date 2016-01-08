@@ -31,6 +31,9 @@ if (instance_exists(PlayerDummy)) {
             state = player_state_bridge;
             bridge = dummy.bridge;
         }
+        
+        swapBlock = true;
+        state = player_state_fall;
     }
     
     //Create new dummy (last instance in list)

@@ -110,6 +110,13 @@ event_inherited();
         }
     }
 //}
+
+if (selected &amp;&amp; Player.size &gt;= 2) {
+    notify_show(
+        "This is a VERY COLD substance!#"
+        + "It will get a reaction near WARM substances.",
+    Main.NOTIFY_TIME, "COLD_ROCK", false, true);
+}
 </string>
           </argument>
         </arguments>

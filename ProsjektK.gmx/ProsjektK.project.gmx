@@ -20,6 +20,7 @@
     <sprites name="Player">
       <sprite>sprites\spr_Player_Eat</sprite>
       <sprite>sprites\spr_Player_Jumping</sprite>
+      <sprite>sprites\spr_Player_Slide</sprite>
       <sprite>sprites\spr_Player_Bridge2</sprite>
       <sprite>sprites\spr_Player_Bridge</sprite>
       <sprite>sprites\spr_Player_Idle2</sprite>
@@ -38,6 +39,7 @@
       <sprite>sprites\spr_Cooler</sprite>
       <sprite>sprites\spr_Hover_Rock</sprite>
       <sprite>sprites\spr_Invisible_Wall</sprite>
+      <sprite>sprites\spr_Event</sprite>
       <sprite>sprites\spr_Tree_Pine</sprite>
       <sprites name="Platform">
         <sprite>sprites\spr_Platform_Cave</sprite>
@@ -47,11 +49,13 @@
       <sprites name="Walls">
         <sprite>sprites\spr_Wall_Lab</sprite>
         <sprite>sprites\spr_Door_Lab</sprite>
+        <sprite>sprites\spr_Door_Rocks</sprite>
         <sprite>sprites\spr_Wall_Cave</sprite>
       </sprites>
       <sprites name="Puzzle">
         <sprite>sprites\spr_Trigger_Button</sprite>
         <sprite>sprites\spr_Trigger_Switch</sprite>
+        <sprite>sprites\spr_Sign</sprite>
       </sprites>
       <sprite>sprites\spr_Slime_Container</sprite>
       <sprites name="Roof">
@@ -68,6 +72,7 @@
   <backgrounds name="background">
     <background>background\bg_Cave</background>
     <background>background\bg_LabTile</background>
+    <background>background\bg_CaveTile</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -130,6 +135,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_Main</font>
+    <font>fonts\fnt_Large</font>
   </fonts>
   <objects name="objects">
     <object>objects\Main</object>
@@ -165,6 +171,7 @@
         <object>objects\obj_Wall_Lab</object>
         <object>objects\obj_Door_Lab</object>
         <object>objects\obj_Wall_Cave</object>
+        <object>objects\obj_Wall_Rocks</object>
       </objects>
       <objects name="Puzzle">
         <object>objects\Trigger</object>
@@ -173,8 +180,9 @@
         <object>objects\obj_Switch</object>
         <object>objects\Grab_Item</object>
         <object>objects\obj_Slime_Orb</object>
-        <object>objects\Hint</object>
+        <object>objects\Event</object>
         <object>objects\obj_Lava</object>
+        <object>objects\Sign</object>
       </objects>
       <objects name="Roof">
         <object>objects\Roof</object>
@@ -188,6 +196,7 @@
     <room>rooms\rom_Main</room>
     <room>rooms\rom_Level1</room>
     <room>rooms\rom_Level2</room>
+    <room>rooms\rom_Level3</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -18,7 +18,7 @@ if (!Notification.visible) {
         Notification.dur = dur;
         Notification.w = w;
         Notification.h = h;
-        Notification.x = (view_wview[0] / 2) - (w / 2);
+        Notification.x = (display_get_gui_width() / 2) - (w / 2);
         Notification.y = -h;
         
         success = true;

@@ -8,6 +8,32 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Initialze camera
+MIN_W = view_wview[0];
+MIN_H = view_hview[0];
+zoom = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -26,12 +52,26 @@
           <argument>
             <kind>1</kind>
             <string>///Follow player
+var dir = (keyboard_check(vk_down) * 2) - 1;
 var SLOWNESS = 32;
-var OFF_Y = 64;
+var OFF_Y = -64;
+if (dir == 1) { OFF_Y = 64; }
 var distX = Player.x - x;
-var distY = (Player.y - OFF_Y) - y;
+var distY = (Player.y + OFF_Y) - y;
 x += (distX / SLOWNESS);
 y += (distY / SLOWNESS);
+
+//Adjust zoom
+var ZOOM_SLOWNESS = 64;
+var camX = MIN_W * zoom;
+var camY = MIN_H * zoom;
+var camDistX = camX - view_wview[0];
+var camDistY = camY - view_hview[0];
+view_wview[0] += (camDistX / SLOWNESS);
+view_hview[0] += (camDistY / SLOWNESS);
+view_hborder[0] = (view_wview[0] / 2);
+view_vborder[0] = (view_hview[0] / 2);
+zoom = 1;
 </string>
           </argument>
         </arguments>

@@ -2,9 +2,6 @@
 
 //Check for input
 var dirX = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-if (dirX == 0) {
-    dirX = keyboard_check(vk_right) - keyboard_check(vk_left);
-}
 var charge = keyboard_check(vk_space);
 var ground = player_platform();
 var wall = player_wall(dirX);

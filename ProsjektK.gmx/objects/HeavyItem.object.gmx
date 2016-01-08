@@ -113,19 +113,15 @@ else {
                 target = Player;
                 state = object_state_idle;
             }
-            
-            notify_show(
-                "This magical substance will make you levitate!#"
-                + "Press [LEFT MOUSE] to pick it up.",
-            Main.NOTIFY_TIME, "TOO_SMALL", true, false);
         }
-        else {
-            //Too small to hold
-            inReach = false;
-            notify_show(
-                "You are too small to hold this object!",
-            Main.NOTIFY_TIME, "TOO_SMALL", true, false);
-        }
+    }
+    
+    if (selected &amp;&amp; Player.size &lt; 2) {
+        //Too small to hold
+        inReach = false;
+        notify_show(
+            "You are too small to hold this object!",
+        Main.NOTIFY_TIME, "TOO_SMALL", false, true);
     }
 }
 </string>

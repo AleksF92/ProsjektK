@@ -184,7 +184,7 @@
     <instance objName="obj_Wall_Cave" x="1792" y="1024" name="inst_16E94E14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall_Cave" x="1280" y="544" name="inst_20C4F682" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall_Cave" x="1280" y="608" name="inst_209B285A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Hint" x="1088" y="896" name="inst_0DDE156F" locked="0" code="text = &quot;Hold [SPACE + A or D] to jump.#The longer you hold it, the futher you jump!&quot;;&#xA;tag = &quot;FIRST_JUMP&quot;;&#xA;TIME = 10;&#xA;" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="Event" x="1120" y="896" name="inst_0DDE156F" locked="0" code="text = &quot;Hold [SPACE + A or D] to jump.#The longer you hold it, the futher you jump!&quot;;&#xA;tag = &quot;FIRST_JUMP&quot;;&#xA;TIME = 10;&#xA;" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform_Cave" x="1632" y="864" name="inst_9D9955E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform_Cave" x="1184" y="640" name="inst_0192447E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform_Cave" x="1120" y="640" name="inst_B1F5C852" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -194,7 +194,7 @@
     <instance objName="obj_Platform_Cave" x="1408" y="960" name="inst_FCF5788F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform_Cave" x="1440" y="640" name="inst_60B70162" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform_Cave" x="1472" y="512" name="inst_5C0A7E68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Hint" x="1920" y="0" name="inst_3C1DD000" locked="0" code="goto = rom_Level2;&#xA;" scaleX="1" scaleY="10" colour="4294967295" rotation="0"/>
+    <instance objName="Event" x="1920" y="192" name="inst_3C1DD000" locked="0" code="slimes = 1;&#xA;" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall_Lab" x="1888" y="128" name="inst_C1E39543" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall_Lab" x="1888" y="64" name="inst_FFE6173B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall_Lab" x="1888" y="0" name="inst_ADA9F60A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -203,6 +203,12 @@
     <instance objName="obj_Wall_Cave" x="64" y="1024" name="inst_8DCAD38F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall_Cave" x="160" y="1024" name="inst_BFF3D810" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall_Cave" x="544" y="1024" name="inst_BEA86DED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Event" x="1184" y="96" name="inst_59DA88B6" locked="0" code="setZoom = 1.5;&#xA;" scaleX="19.6129035949707" scaleY="13" colour="4294967295" rotation="0"/>
+    <instance objName="Sign" x="1504" y="384" name="inst_7EEE3909" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Sign" x="1120" y="864" name="inst_AC017ADC" locked="0" code="type = SIGN.JUMP;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Sign" x="801" y="372" name="inst_B2A45C83" locked="0" code="type = SIGN.RESIZE;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Sign" x="272" y="374" name="inst_43573FAA" locked="0" code="type = SIGN.SWAP;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Platform_Cave" x="1152" y="512" name="inst_27F0FA9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="832" y="1024" w="16" h="16" xo="0" yo="0" id="10000025" name="inst_F124C998" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

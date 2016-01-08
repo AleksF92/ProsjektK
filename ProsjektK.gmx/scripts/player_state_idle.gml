@@ -2,9 +2,6 @@
 
 //Check for input
 var dirX = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-if (dirX == 0) {
-    dirX = keyboard_check(vk_right) - keyboard_check(vk_left);
-}
 var charge = keyboard_check(vk_space);
 var wall = player_wall(dirX);
 
@@ -15,7 +12,7 @@ if (charge) {
     image_speed = 0;
     state = player_state_jump;
 }
-else if (dirX != 0 && !wall) {
+else if (dirX != 0 && !wall && !swapBlock) {
     //Start moving
     sprite_index = spr_Player_Jumping;
     image_index = 1;
@@ -52,5 +49,9 @@ else {
             var sec = room_speed;
             alarm[0] = irandom_range(sec, sec * 5);
         }
+    }
+    
+    if (dirX == 0) {
+        swapBlock = false;
     }
 }

@@ -39,6 +39,7 @@ alarm[0] = room_speed * 3;
 state = player_state_fall;
 velX = 0;
 velY = 0;
+swapBlock = false;
 
 //Size relatives
 size = 0;
@@ -257,27 +258,19 @@ if (state == player_state_jump) {
     draw_circle_colour(px, py, 5, c_lime, c_lime, false);
     
     //Calc path
-    /*
-    var r = (px - x) / 2;
-    var midX = x + r;
-    var lx = x;
-    for (var i = 0; i &lt; 6; i++) {
-        
-        var nx = 
-    }
-    */
+    //To do...
 }
 
 //Debug info
 /*
-draw_text(x, y - 40,
-    "VelX: " + string(velX)
-    + "#VelY: " + string(velY)
-);
-*/
+draw_text(x, y - 40, ""
+    //+ "#VelX: " + string(velX)
+    //+ "#VelY: " + string(velY)
+    //+ "#Block: " + string(swapBlock)
+); */
 
-
-//Draw platform
+//Draw platform collision points
+/*
 var SW = sprite_width * phySize;
 var SXO = sprite_get_xoffset(sprite_index) * phySize;
 var PW = (sprite_get_width(spr_Platform_Cave) / 3) * (2 - phySize);
@@ -287,7 +280,26 @@ var yOff = y + 1;
 
 draw_point_colour(leftX, yOff, c_red);
 draw_point_colour(x, yOff, c_red);
-draw_point_colour(rightX, yOff, c_red);
+draw_point_colour(rightX, yOff, c_red); */
+
+///draw wall collosion (dir)
+var dir = sign(velX);
+
+var SW = sprite_width * phySize;
+var SH = sprite_height * phySize;
+var ground = player_platform();
+
+var hw = SW / 2;
+var hh = SH / 3;
+var SOY = sprite_get_yoffset(sprite_index) * phySize;
+var x1 = x + (hw * dir) + (dir * 1);
+var y1 = y - SOY + (hh / 2);
+var y2 = y1 + hh;
+if (ground) {
+    y2 = min(y2, ground.y);
+}
+
+draw_point_colour(x1, y2, c_red);
 </string>
           </argument>
         </arguments>

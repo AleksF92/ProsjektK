@@ -14,19 +14,29 @@ switch (textId) {
     case "Controls": {
         TextDisplay.fullText =
         "Controls"
-        + "##[A or LEFT] :: Move left"
-        + "#[D or RIGHT] :: Move right"
+        + "##[A] :: Move left"
+        + "#[D] :: Move right"
         + "#[SPACE] :: Hold to charge jump"
         + "#[W] :: Split into more slimes."
         + "#[S] :: Merge with slime(s)."
         + "#[TAB] :: Swap controlled slime."
         + "#[LEFT MOUSE] :: Interact with objects."
+        + "#[DOWN] :: Look down with the camera."
         + "##[Escape] :: Return to main menu";
         break;
     }
     case "Change Log": {
         TextDisplay.fullText =
-        "Change Log (Alpha v0.3)"
+        "Change Log (Alpha v0.4)"
+        + "##Added camera zoom event for better view."
+        + "#Added camera control to look down."
+        + "#Added level finish requirement."
+        + "#Alot of bug fixes."
+        + "#Added tutorial signs."
+        + "#Added new level."
+        
+        + "<PAGE>"
+        + "Change Log (Alpha v0.3)"
         + "##Added new obstacles."
         + "#Added new level."
         

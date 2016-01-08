@@ -108,30 +108,44 @@ if (room != rom_Main) {
           <argument>
             <kind>1</kind>
             <string>///Load the room
+
+//Hide current menu
+Menu.visible = false;
+
+//Load appropriate room
 switch (room) {
     case rom_Main: {
-        Inventory.visible = false;
-        Crafting.visible = false;
+        //Reset variables
         Notification.visible = false;
         Menu.visible = true;
-        
-        ds_grid_clear(Inventory.iId, -1);
-        ds_grid_clear(Inventory.iCount, 0);
         break;
     }
     case rom_Level1: {
-        Menu.visible = false;
-        
+        //Clear map variables
         ds_map_clear(tags);
         ds_map_clear(triggers);
         
+        //Welcome message
         notify_show(
             "Press [A] and [D] to move.",
         NOTIFY_TIME, "WELCOME", false, true);
         break;
     }
     case rom_Level2: {
+        //Clear map variables
+        tags[? "TOO_SMALL"] = false;
+        tags[? "MAGICAL_ROCK"] = false;
         triggers[? "P2_DOOR"] = false;
+        break;
+    }
+    case rom_Level3: {
+        //Clear map variables
+        tags[? "WARM_ROCK"] = false;
+        tags[? "COLD_ROCK"] = false;
+        triggers[? "P2_DOOR1_BOTTOM"] = false;
+        triggers[? "P2_DOOR1_TOP"] = false;
+        triggers[? "P2_DOOR2"] = false;
+        triggers[? "P2_DOOR3"] = false;
         break;
     }
 }
@@ -161,8 +175,8 @@ switch (room) {
 if (room != rom_Main) {
     var bg = -1;
     switch(room) {
-        case rom_Level1: { bg = bg_Cave; break; }
-        case rom_Level2: { bg = bg_Cave; break; }
+        //case rom_Level1: { bg = bg_Cave; break; }
+        default: { bg = bg_Cave; break; }
     }
     
     //Draw background

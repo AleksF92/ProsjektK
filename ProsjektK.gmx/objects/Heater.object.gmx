@@ -27,6 +27,13 @@
             <kind>1</kind>
             <string>///Handle events
 event_inherited();
+
+if (selected &amp;&amp; Player.size &gt;= 2) {
+    notify_show(
+        "This is a VERY WARM substance!#"
+        + "It will get a reaction near COLD substances.",
+    Main.NOTIFY_TIME, "WARM_ROCK", false, true);
+}
 </string>
           </argument>
         </arguments>

@@ -3,9 +3,6 @@
 //Check for input
 var charging = keyboard_check(vk_space);
 var dirX = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-if (dirX == 0) {
-    dirX = keyboard_check(vk_right) - keyboard_check(vk_left);
-}
 
 if (charging) {
     if (velY == 0) {

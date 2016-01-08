@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -y - 32;
+            <string>///Initialize effect
 image_speed = 0;
 
 type = "";
@@ -52,7 +52,8 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>switch (type) {
+            <string>///Handle events
+switch (type) {
     case "Explosion": {
         sprite_index = spr_Effect_Explosion;
         audio_play_sound(snd_Explosion_Small, 1, false);
