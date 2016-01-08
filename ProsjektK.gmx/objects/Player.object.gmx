@@ -283,6 +283,7 @@ draw_point_colour(x, yOff, c_red);
 draw_point_colour(rightX, yOff, c_red); */
 
 ///draw wall collosion (dir)
+/*
 var dir = sign(velX);
 
 var SW = sprite_width * phySize;
@@ -299,7 +300,7 @@ if (ground) {
     y2 = min(y2, ground.y);
 }
 
-draw_point_colour(x1, y2, c_red);
+draw_point_colour(x1, y2, c_red); */
 </string>
           </argument>
         </arguments>
